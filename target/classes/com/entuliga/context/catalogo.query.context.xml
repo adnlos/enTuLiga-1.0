@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- Insert participante -->
+	
+	<!-- ASISTENTE DE CONSULTAS PARA PROCESO INGRESOS FINANCIEROS  -->
+	<bean id="ParticipanteQueryHelper" class="com.entuliga.registro.helper.ParticipanteQueryHelper">
+		<property name="querys">
+			<map>
+				<entry key="INSERT_PARTICIPANTE">
+					<value>
+						INSERT INTO TBL_PARTICIPANTE (ID_PARTICIPANTE, NOMBRE_P, APELLIDO_PATERNO_P, APELLIDO_MATERNO_P, FECHA_NACIMIENTO_P, ID_GENERO, MAIL_P, ESTADO_P, USUARIO, CONTRASENA)
+    					VALUES(:idParticipante, :nombreP, :apellidoPaternoP, :apellidoMaternoP, :fechaNacimientoP, :idGeneroP, :MailP , :estadoP, :usuarioP, :passwordP)
+					</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

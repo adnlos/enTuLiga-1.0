@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<!-- 
+		DEFINICION BASE PARA LA PLANTILLA 
+	-->
+	<definition name="base.layout" template="/pages/layout/container.jsp">
+		<put-attribute name="title" value="Tu Liga - Inovando El Deporte" />
+		<put-attribute name="header" value="/pages/layout/skin/header.jsp"/>
+		<put-attribute name="footer" value="/pages/layout/skin/footer.jsp" />
+		<put-attribute name="avisos" value="/pages/layout/skin/avisos.jsp"/>
+	</definition>
+	
+	<!-- 
+		DEFINICION DEL CONTENIDO DE LA APLICACION EN TILES 
+	-->
+	
+<!--	<definition name="content.layout" template="/pages/layout/content-container.jsp"></definition>-->
+	<!-- 
+		DEFINICIONES GENERALES DE TU LIGA
+	 -->
+	<definition name="indexApp" extends="base.layout">
+		<put-attribute name="title"  value="index"/>
+		<put-attribute name="body"   value="/pages/indexLiga.jsp"/>      
+  	</definition>
+  	
+  	<definition name="registroParticipante" extends="base.layout">
+		<put-attribute name="body" value="/pages/registro/registroParticipante.jsp" />
+	</definition>
+  	
+  	
+  	
+</tiles-definitions>

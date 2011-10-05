@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:property="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	
+	<!-- Las definciones de las vista se realizaran dentro del archivo
+	views.xml, aqui se colocaran todas las url que se necesiten en las vistas
+	ya sean de carga o de json -->
+	<bean id="xmlFileViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver"
+	property:location="/WEB-INF/views.xml"
+	property:order="1"/>
+	
+	
+	<!-- El Disptcher servlet estara buscando las anotaciones del Controller
+	y Requesta mapping con base a el paquete de controller. Buscando en los paquetes las anotaciones @controller -->
+	<context:component-scan base-package="com.entuliga.controller" />
+	<context:component-scan base-package="com.entuliga.registro.controller" />
+	
+	<!-- Configuracion de Tiles para las definiciones de la plantilla dentro del archivo tiles.xml -->
+	<bean name="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+	property:definitions="/WEB-INF/tiles.xml"/>
+	
+	<!-- Configuracion del archivo de internacionalizacion, contiene los mensajes de la aplicacion -->
+	<bean name="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+	property:basename="/WEB-INF/i18n-es"
+	/>
+</beans>

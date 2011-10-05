@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<bean name="jsonView" class="org.springframework.web.servlet.view.json.JsonView" 
+	scope="prototype"/>
+	
+	<bean id="indexApp" class="org.springframework.web.servlet.view.tiles2.TilesView">
+		<property name="url" value="indexApp" />
+	</bean>
+	
+	<!-- SE DEFINIRAN LOS NOMBRES DE LAS VISTAS QUE SON URL Y EXTIENDEN DE TILES-->
+	
+	<!-- Registro Participante -->
+	<bean id="registroParticipante" class="org.springframework.web.servlet.view.tiles2.TilesView">
+		<property name="url" value="registroParticipante"/>
+	</bean>
+
+	<!-- VIEWS DE CATALOGOS -->
+	
+	<!-- VIEWS DE PROCESOS -->
+	
+	<!-- VIEWS DE CONSULTAS -->
+	
+</beans>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+	
+	<!-- IMPORTAMOS LOS ARCHIVO QUE CONTIENE LOS CONTEXTOS DE LOS QUERYS--> 
+	
+	<import resource="catalogo.query.context.xml"/>
+	
+		
+	<!-- DATA SOURCE LOCAL -->
+	<bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+	p:driverClassName="com.mysql.jdbc.Driver"
+	p:url="jdbc:mysql://localhost:3306/entuliga"
+	p:username="root" p:password="root"/>  
+
+
+	<!-- JDBC TEMPLATE -->
+	<bean id="JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+	p:dataSource-ref="DataSource"/>
+	
+	
+	<!-- INJECTION DE DEPENDENCIAS -->
+	<!-- ELEMENTOS -->
+		
+	<!-- DAOS -->
+	<bean id="ParticipanteDao" class="com.entuliga.registro.dao.impl.ParticipanteDaoImpl"
+	p:jdbcTemplate-ref ="JdbcTemplate"
+	p:queryHelper-ref="ParticipanteQueryHelper">
+	</bean>
+	
+	
+	<!-- BOS-->
+	<bean id="ParticipanteBo" class="com.entuliga.registro.bo.impl.ParticipanteBoImpl"
+	p:participanteDao-ref="ParticipanteDao"/>
+			
+			
+	<!--FACADE-->
+	<bean id="ParticipanteFacade" class="com.entuliga.registro.facade.ParticipanteFacade" 
+	p:participanteBo-ref = "ParticipanteBo"/>
+	
+</beans>
